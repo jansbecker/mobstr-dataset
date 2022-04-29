@@ -685,7 +685,7 @@
     <target href="../org.panorama-research.mobstr.fmea/mobstr-fmea.integration#//@odeProductPackages.0/@failureModels.9/@failures.10"/>
   </traces>
   <traces xsi:type="tim:ImplementsComponent" name="Lidar_Function -> Lidar Grabber : Component;">
-    <source xsi:type="am:Runnable" href="../org.panorama-research.mobstr.amalthea/mapped+safety/mobstr-mapped+safety.amxmi#Lidar_and_Camera_Function?type=Runnable"/>
+    <source xsi:type="am:Runnable" href="../org.panorama-research.mobstr.amalthea/mapped+safety/mobstr-mapped+safety.amxmi#Lidar_Function?type=Runnable"/>
     <target href="../org.panorama-research.mobstr.architecture/mobstr-architecture.uml#_QBDgIH_ZEeq1j4EUwdsVmw"/>
   </traces>
   <traces xsi:type="tim:ImplementsComponent" name="CAN_Function -> CANBus Interface : Component;">
@@ -767,5 +767,41 @@
   <traces xsi:type="tim:ExpressesAsGoal" name="32 : Claim -> \l\tHazards!H-5 (mobstr-hazards.xlsx);\l\t">
     <source xsi:type="argumentation_:Claim" href="../org.panorama-research.mobstr.safetycase/mobstr-safetycase.integration#//@assuranceCasePackages.0/@argumentPackage.0/@argumentationElement.19"/>
     <target href="artifactWrappers.xmi#//@artifacts.15"/>
+  </traces>
+  <traces xsi:type="tim:SpecifiedByContract" name="Lidar Grabber : Component -> C2 : DependabilityContract;">
+    <source href="../org.panorama-research.mobstr.architecture/mobstr-architecture.uml#_QBDgIH_ZEeq1j4EUwdsVmw"/>
+    <target href="../org.panorama-research.mobstr.contracts/mobstr-contracts.dependability_#//@dependabilityRequirements.1/@dependabilityContracts.0"/>
+  </traces>
+  <traces xsi:type="tim:SpecifiedByContract" name="Object Detection : Component -> C1 : DependabilityContract;">
+    <source href="../org.panorama-research.mobstr.architecture/mobstr-architecture.uml#_EMPt8H_cEeq1j4EUwdsVmw"/>
+    <target href="../org.panorama-research.mobstr.contracts/mobstr-contracts.dependability_#//@dependabilityRequirements.0/@dependabilityContracts.0"/>
+  </traces>
+  <traces xsi:type="tim:SpecifiedByContract" name="Image Grabber (Camera) : Component -> C3 : DependabilityContract;">
+    <source href="../org.panorama-research.mobstr.architecture/mobstr-architecture.uml#_8l-gIH_bEeq1j4EUwdsVmw"/>
+    <target href="../org.panorama-research.mobstr.contracts/mobstr-contracts.dependability_#//@dependabilityRequirements.2/@dependabilityContracts.0"/>
+  </traces>
+  <traces xsi:type="tim:SpecifiedByContract" name="Object Localization via Lidar : Component -> C4 : DependabilityContract;">
+    <source href="../org.panorama-research.mobstr.architecture/mobstr-architecture.uml#_h63n8GRzEeu5Bd8fMshJEA"/>
+    <target href="../org.panorama-research.mobstr.contracts/mobstr-contracts.dependability_#//@dependabilityRequirements.3/@dependabilityContracts.0"/>
+  </traces>
+  <traces xsi:type="tim:SpecifiedByContract" name="Object Localization via Camera : Component -> C5 : DependabilityContract;">
+    <source href="../org.panorama-research.mobstr.architecture/mobstr-architecture.uml#_le1d8GRzEeu5Bd8fMshJEA"/>
+    <target href="../org.panorama-research.mobstr.contracts/mobstr-contracts.dependability_#//@dependabilityRequirements.4/@dependabilityContracts.0"/>
+  </traces>
+  <traces xsi:type="tim:SpecifiedByContract" name="Sensor Fusion : Component -> C6 : DependabilityContract;">
+    <source href="../org.panorama-research.mobstr.architecture/mobstr-architecture.uml#_t98fwH_bEeq1j4EUwdsVmw"/>
+    <target href="../org.panorama-research.mobstr.contracts/mobstr-contracts.dependability_#//@dependabilityRequirements.5/@dependabilityContracts.0"/>
+  </traces>
+  <traces xsi:type="tim:ImplementsComponent" name="Camera_Function -> Image Grabber (Camera) : Component;">
+    <source xsi:type="am:Runnable" href="../org.panorama-research.mobstr.amalthea/mapped+safety/mobstr-mapped+safety.amxmi#Camera_Function?type=Runnable"/>
+    <target href="../org.panorama-research.mobstr.architecture/mobstr-architecture.uml#_8l-gIH_bEeq1j4EUwdsVmw"/>
+  </traces>
+  <traces xsi:type="tim:ImplementsComponent" name="Localization_Function -> Object Localization via Lidar : Component;">
+    <source xsi:type="am:Runnable" href="../org.panorama-research.mobstr.amalthea/mapped+safety/mobstr-mapped+safety.amxmi#Localization_Function?type=Runnable"/>
+    <target href="../org.panorama-research.mobstr.architecture/mobstr-architecture.uml#_h63n8GRzEeu5Bd8fMshJEA"/>
+  </traces>
+  <traces xsi:type="tim:ImplementsComponent" name="Sensor_Fusion_Function -> Sensor Fusion : Component;">
+    <source xsi:type="am:Runnable" href="../org.panorama-research.mobstr.amalthea/mapped+safety/mobstr-mapped+safety.amxmi#Sensor_Fusion_Function?type=Runnable"/>
+    <target href="../org.panorama-research.mobstr.architecture/mobstr-architecture.uml#_t98fwH_bEeq1j4EUwdsVmw"/>
   </traces>
 </tim:MobstrTIM>
