@@ -53,17 +53,17 @@
   <packagedElement xmi:type="uml:Usage" xmi:id="_4rC7oH_bEeq1j4EUwdsVmw" client="_x1uCkH_bEeq1j4EUwdsVmw" supplier="_59JHkH_ZEeq1j4EUwdsVmw"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_EMPt8H_cEeq1j4EUwdsVmw" name="Object Detection">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_IbumIH_cEeq1j4EUwdsVmw" name="fused_objects" aggregation="composite"/>
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_ZcYt0GR1Eeu5Bd8fMshJEA" name="obstacle" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_ZcYt0GR1Eeu5Bd8fMshJEA" name="sd" aggregation="composite"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_SOBJ4GX6Eeu5Bd8fMshJEA" name="warnings" aggregation="composite"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_m_MSwGX6Eeu5Bd8fMshJEA" name="object_list" aggregation="composite"/>
     <packagedElement xmi:type="uml:Component" xmi:id="_QBDgIH_ZEeq1j4EUwdsVmw" name="Lidar Grabber">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_59JHkH_ZEeq1j4EUwdsVmw" name="lidar_output" aggregation="composite"/>
       <ownedAttribute xmi:type="uml:Port" xmi:id="_hDXfsH_bEeq1j4EUwdsVmw" name="occupancy_grid" aggregation="composite"/>
-      <ownedAttribute xmi:type="uml:Port" xmi:id="_RkLicMYpEey0lojg4MhY1g" name="lidar_raw" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_RkLicMYpEey0lojg4MhY1g" name="sd_lidar" aggregation="composite"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Component" xmi:id="_8l-gIH_bEeq1j4EUwdsVmw" name="Image Grabber (Camera)">
       <ownedAttribute xmi:type="uml:Port" xmi:id="__yOZsH_bEeq1j4EUwdsVmw" name="frame" visibility="package" aggregation="composite"/>
-      <ownedAttribute xmi:type="uml:Port" xmi:id="_ctVBIMYpEey0lojg4MhY1g" name="camera_raw" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_ctVBIMYpEey0lojg4MhY1g" name="sd_camera" aggregation="composite"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Component" xmi:id="_YZMdYGRzEeu5Bd8fMshJEA" name="Object Localization">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_UHfM8GX6Eeu5Bd8fMshJEA" name="warnings" aggregation="composite"/>
@@ -71,7 +71,7 @@
       <ownedAttribute xmi:type="uml:Port" xmi:id="_7_dyIGX7Eeu5Bd8fMshJEA" name="lidar_input" aggregation="composite"/>
       <ownedAttribute xmi:type="uml:Port" xmi:id="__vo4IGX7Eeu5Bd8fMshJEA" name="frame" aggregation="composite"/>
       <packagedElement xmi:type="uml:Component" xmi:id="_h63n8GRzEeu5Bd8fMshJEA" name="Object Localization via Lidar">
-        <ownedAttribute xmi:type="uml:Port" xmi:id="_sRFVEGX4Eeu5Bd8fMshJEA" name="lidar_input" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_sRFVEGX4Eeu5Bd8fMshJEA" name="lidar_output" aggregation="composite"/>
         <ownedAttribute xmi:type="uml:Port" xmi:id="_kWg1wGX5Eeu5Bd8fMshJEA" name="object_poses" aggregation="composite"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Component" xmi:id="_le1d8GRzEeu5Bd8fMshJEA" name="Object Localization via Camera">

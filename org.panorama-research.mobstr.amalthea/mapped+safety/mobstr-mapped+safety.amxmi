@@ -171,7 +171,7 @@
     </runnables>
     <runnables xmi:id="Lidar_Function?type=Runnable" name="Lidar_Function" callback="false" service="false">
       <activityGraph>
-        <items xsi:type="am:LabelAccess" data="lidar_raw?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="sd_lidar?type=Label" access="read"/>
         <items xsi:type="am:Ticks">
           <extended key="Denver?type=ProcessingUnitDefinition">
             <value xsi:type="am:DiscreteValueStatistics" lowerBound="9794000" upperBound="10868000" average="1.0174035E7"/>
@@ -192,6 +192,7 @@
                 </values>
               </value>
             </customProperties>
+            <items xsi:type="am:ModeLabelAccess" data="lg_mode?type=ModeLabel" access="set" value="Recover" step="1"/>
           </entries>
           <entries probability="0.999999">
             <customProperties key="cut-sets">
@@ -199,7 +200,8 @@
                 <values xsi:type="am:ListObject"/>
               </value>
             </customProperties>
-            <items xsi:type="am:LabelAccess" data="Cloud_map_host?type=Label" access="write"/>
+            <items xsi:type="am:ModeLabelAccess" data="lg_mode?type=ModeLabel" access="set" value="Normal" step="1"/>
+            <items xsi:type="am:LabelAccess" data="Cloud_map_host+%28lidar_output%29?type=Label" access="write"/>
             <items xsi:type="am:LabelAccess" data="Occupancy_grid_host?type=Label" access="write"/>
           </entries>
         </items>
@@ -404,7 +406,7 @@
     </runnables>
     <runnables xmi:id="Localization_Preprocessing?type=Runnable" name="Localization_Preprocessing" callback="false" service="false">
       <activityGraph>
-        <items xsi:type="am:LabelAccess" data="Cloud_map_host?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Cloud_map_host+%28lidar_output%29?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="Vehicle_status_host?type=Label" access="read"/>
         <items xsi:type="am:Ticks">
           <extended key="Denver?type=ProcessingUnitDefinition">
@@ -475,7 +477,7 @@
     </runnables>
     <runnables xmi:id="Localization_host_to_device?type=Runnable" name="Localization_host_to_device" callback="false" service="false">
       <activityGraph>
-        <items xsi:type="am:LabelAccess" data="Cloud_map_host?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Cloud_map_host+%28lidar_output%29?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="Vehicle_status_host?type=Label" access="read"/>
         <items xsi:type="am:LabelAccess" data="Cloud_map_device?type=Label" access="write"/>
         <items xsi:type="am:LabelAccess" data="Vehicle_status_device?type=Label" access="write"/>
@@ -533,7 +535,7 @@
     </runnables>
     <runnables xmi:id="Camera_Function?type=Runnable" name="Camera_Function" callback="false" service="false">
       <activityGraph>
-        <items xsi:type="am:LabelAccess" data="camera_raw?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="sd_camera?type=Label" access="read"/>
         <items xsi:type="am:Ticks">
           <extended key="Denver?type=ProcessingUnitDefinition">
             <value xsi:type="am:DiscreteValueStatistics" lowerBound="9794000" upperBound="10868000" average="1.0174035E7"/>
@@ -554,6 +556,7 @@
                 </values>
               </value>
             </customProperties>
+            <items xsi:type="am:ModeLabelAccess" data="cg_mode?type=ModeLabel" access="set" value="Recover" step="1"/>
           </entries>
           <entries probability="0.99">
             <customProperties key="cut-sets">
@@ -561,6 +564,7 @@
                 <values xsi:type="am:ListObject"/>
               </value>
             </customProperties>
+            <items xsi:type="am:ModeLabelAccess" data="cg_mode?type=ModeLabel" access="set" value="Normal" step="1"/>
             <items xsi:type="am:LabelAccess" data="Image_host?type=Label" access="write"/>
             <items xsi:type="am:LabelAccess" data="Image_SFM_host?type=Label" access="write"/>
             <items xsi:type="am:LabelAccess" data="Image_lane_lines_host?type=Label" access="write"/>
@@ -568,15 +572,15 @@
         </items>
       </activityGraph>
     </runnables>
-    <labels xmi:id="Cloud_map_host?type=Label" name="Cloud_map_host" constant="false" bVolatile="false">
+    <labels xmi:id="Cloud_map_host+%28lidar_output%29?type=Label" name="Cloud_map_host (lidar_output)" constant="false" bVolatile="false">
       <customProperties key="rtana:portname">
-        <value xsi:type="am:StringObject" value="lidar_input"/>
+        <value xsi:type="am:StringObject" value="lidar_output"/>
       </customProperties>
       <size value="1500" unit="kB"/>
     </labels>
     <labels xmi:id="Occupancy_grid_host?type=Label" name="Occupancy_grid_host" constant="false" bVolatile="false">
       <customProperties key="rtana:portname">
-        <value xsi:type="am:StringObject" value="lidar_output"/>
+        <value xsi:type="am:StringObject" value="lidar_input"/>
       </customProperties>
       <size value="500" unit="kB"/>
     </labels>
@@ -678,15 +682,15 @@
         <value xsi:type="am:StringObject" value="fused_objects"/>
       </customProperties>
     </labels>
-    <labels xmi:id="lidar_raw?type=Label" name="lidar_raw" constant="false" bVolatile="false">
+    <labels xmi:id="sd_lidar?type=Label" name="sd_lidar" constant="false" bVolatile="false">
       <customProperties key="rtana:portname">
-        <value xsi:type="am:StringObject" value="lidar_raw"/>
+        <value xsi:type="am:StringObject" value="sd_lidar"/>
       </customProperties>
       <size value="1500" unit="kB"/>
     </labels>
-    <labels xmi:id="camera_raw?type=Label" name="camera_raw" constant="false" bVolatile="false">
+    <labels xmi:id="sd_camera?type=Label" name="sd_camera" constant="false" bVolatile="false">
       <customProperties key="rtana:portname">
-        <value xsi:type="am:StringObject" value="camera_raw"/>
+        <value xsi:type="am:StringObject" value="sd_camera"/>
       </customProperties>
       <size value="1500" unit="kB"/>
     </labels>
@@ -694,6 +698,12 @@
     <events xmi:id="Detect?type=OsEvent" name="Detect" communicationOverheadInBit="0"/>
     <events xmi:id="SFM?type=OsEvent" name="SFM" communicationOverheadInBit="0"/>
     <events xmi:id="Localization_GPU?type=OsEvent" name="Localization_GPU" communicationOverheadInBit="0"/>
+    <modes xsi:type="am:EnumMode" xmi:id="GrabberMode?type=EnumMode" name="GrabberMode">
+      <literals xmi:id="GrabberMode/Normal?type=ModeLiteral" name="Normal"/>
+      <literals xmi:id="GrabberMode/Recover?type=ModeLiteral" name="Recover"/>
+    </modes>
+    <modeLabels xmi:id="lg_mode?type=ModeLabel" name="lg_mode" mode="GrabberMode?type=EnumMode" initialValue="Normal"/>
+    <modeLabels xmi:id="cg_mode?type=ModeLabel" name="cg_mode" mode="GrabberMode?type=EnumMode" initialValue="Normal"/>
   </swModel>
   <hwModel>
     <definitions xsi:type="am:ProcessingUnitDefinition" xmi:id="A57?type=ProcessingUnitDefinition" name="A57" puType="CPU"/>
@@ -989,7 +999,7 @@
     <memoryMapping abstractElement="Bounding_box_device?type=Label" memory="SYSTEM_DRAM?type=Memory" memoryPositionAddress="0x0"/>
     <memoryMapping abstractElement="Bounding_box_host?type=Label" memory="SYSTEM_DRAM?type=Memory" memoryPositionAddress="0x0"/>
     <memoryMapping abstractElement="Cloud_map_device?type=Label" memory="SYSTEM_DRAM?type=Memory" memoryPositionAddress="0x0"/>
-    <memoryMapping abstractElement="Cloud_map_host?type=Label" memory="SYSTEM_DRAM?type=Memory" memoryPositionAddress="0x0"/>
+    <memoryMapping abstractElement="Cloud_map_host+%28lidar_output%29?type=Label" memory="SYSTEM_DRAM?type=Memory" memoryPositionAddress="0x0"/>
     <memoryMapping abstractElement="Image_device?type=Label" memory="SYSTEM_DRAM?type=Memory" memoryPositionAddress="0x0"/>
     <memoryMapping abstractElement="Image_host?type=Label" memory="SYSTEM_DRAM?type=Memory" memoryPositionAddress="0x0"/>
     <memoryMapping abstractElement="Image_lane_lines_device?type=Label" memory="SYSTEM_DRAM?type=Memory" memoryPositionAddress="0x0"/>

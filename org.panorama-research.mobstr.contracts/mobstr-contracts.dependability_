@@ -2,24 +2,26 @@
 <dependability_:RequirementPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dependability_="http://www.deis-project.eu/ode/mergedODE/dependability" name="mobstr-contracts">
   <dependabilityRequirements xsi:type="dependability_:SafetyRequirement" name="Req Object Detection">
     <dependabilityContracts name="C1" assumptions="//@assumptions.0 //@assumptions.1 //@assumptions.2 //@assumptions.5">
-      <guaranteeFormalization expression=" Reaction(obstacle, fused_objects) within [100, 740]ms" language="MTSL"/>
+      <guaranteeFormalization expression=" Reaction(sd, fused_objects) within [100, 1006] ms in mode Normal" language="MTSL"/>
+      <guaranteeFormalization expression=" Reaction(sd, set(mode, Recover)) within [5, 66] ms in mode Normal" language="MTSL"/>
+      <guaranteeFormalization expression=" Reaction(sd, fused_objects) within [100, 940] ms in mode Recover" language="MTSL"/>
     </dependabilityContracts>
   </dependabilityRequirements>
   <dependabilityRequirements xsi:type="dependability_:SafetyRequirement" name="Req Lidar Grabber">
     <dependabilityContracts name="C2" assumptions="//@assumptions.0 //@assumptions.3">
-      <guaranteeFormalization expression="lidar_output does not occur if in mode Lidar.NOT_OK when lidar_raw is read" language="MTSL"/>
-      <guaranteeFormalization expression="Reaction(lidar_raw, lidar_output) within [5,60] ms in mode Lidar.OK" language="MTSL"/>
+      <guaranteeFormalization expression="Reaction(sd_lidar.OK, (set(mode, Normal), lidar_output)) within [5,60] ms" language="MTSL"/>
+      <guaranteeFormalization expression="Reaction(sd_lidar.NOT_OK, set(mode, Recover)) within [5,60] ms" language="MTSL"/>
     </dependabilityContracts>
   </dependabilityRequirements>
   <dependabilityRequirements xsi:type="dependability_:SafetyRequirement" name="Req Camera Grabber">
     <dependabilityContracts name="C3" assumptions="//@assumptions.1 //@assumptions.4">
-      <guaranteeFormalization expression="frame does not occur if in mode Camera.NOT_OK when camera_raw is read" language="MTSL"/>
-      <guaranteeFormalization expression="Reaction(camera_raw, frame) within [10,60] ms in mode Camera.OK" language="MTSL"/>
+      <guaranteeFormalization expression="Reaction(sd_camera.OK, (set(mode, Normal), frame)) within [10,60] ms" language="MTSL"/>
+      <guaranteeFormalization expression="Reaction(sd_camera.NOT_OK, set(mode, Recover)) within [10,60] ms" language="MTSL"/>
     </dependabilityContracts>
   </dependabilityRequirements>
   <dependabilityRequirements xsi:type="dependability_:SafetyRequirement" name="Req Object Localization via LIDAR">
     <dependabilityContracts name="C4">
-      <guaranteeFormalization expression="Reaction(lidar_input, object_poses) within [120,795]ms" language="MTSL"/>
+      <guaranteeFormalization expression="Reaction(lidar_output, object_poses) within [120,795]ms" language="MTSL"/>
     </dependabilityContracts>
   </dependabilityRequirements>
   <dependabilityRequirements xsi:type="dependability_:SafetyRequirement" name="Req Oject Localization via Camera">
@@ -34,21 +36,21 @@
     </dependabilityContracts>
   </dependabilityRequirements>
   <assumptions name="A1">
-    <formalization expression="Lidar fails at most once every 200ms with latency [10,30] ms" language="MTSL"/>
+    <formalization expression="Lidar fails at most once every 132 ms with latency 66 ms" language="MTSL"/>
   </assumptions>
   <assumptions name="A2">
-    <formalization expression="Camera fails at most once every 400ms with latency [10,30] ms" language="MTSL"/>
+    <formalization expression="Camera fails at most once every 132 ms with latency 66 ms" language="MTSL"/>
   </assumptions>
   <assumptions name="A3">
     <formalization expression="at most one of {Camera, Lidar} fails permanently" language="MTSL"/>
   </assumptions>
   <assumptions name="A2b">
-    <formalization expression="lidar_raw occurs every 33ms" language="MTSL"/>
+    <formalization expression="sd_lidar occurs every 66ms" language="MTSL"/>
   </assumptions>
   <assumptions name="A3b">
-    <formalization expression="camera_raw occurs every 33ms" language="MTSL"/>
+    <formalization expression="sd_camera occurs every 66ms" language="MTSL"/>
   </assumptions>
   <assumptions name="A0">
-    <formalization expression="obstacle occurs every 33ms" language="MTSL"/>
+    <formalization expression="sd occurs every 66ms" language="MTSL"/>
   </assumptions>
 </dependability_:RequirementPackage>
